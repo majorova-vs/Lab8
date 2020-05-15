@@ -125,6 +125,21 @@ namespace Lab8
             return true;
 
         }
+        public static bool IDCheck(string q1, XDocument doc)
+        {
+            string info = "";
+            IEnumerable<XElement> Medicine =
+                 from el in doc.Root.Elements("Medicine")
+                 where (string)el.Attribute("DrugStoreId") == q1
+                 select el;
+            foreach (XElement el in Medicine)
+                info += el;
+            if (info == "")
+                return true;
+            else
+                return false;
+
+        }
 
         public static bool FindMatch(string q1, string q2, string q3,  XDocument doc)
         {
