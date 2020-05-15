@@ -25,9 +25,11 @@ namespace Lab8
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Check.CheckFullData(textBox1.Text, textBox2.Text, textBox3.Text
-                , textBox4.Text, textBox5.Text, textBox6.Text))
-                button1.DialogResult = DialogResult.OK;
+            if  (Check.CheckData(textBox1.Text, textBox2.Text, textBox3.Text) &&
+                Check.CheckFullData(textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text))
+            { 
+                button1.DialogResult = DialogResult.OK; 
+            }
             DataBank.in1 = textBox1.Text;
             DataBank.in2 = textBox2.Text;
             DataBank.in3 = textBox3.Text;

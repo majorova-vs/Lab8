@@ -13,21 +13,25 @@ namespace Lab8
        static DateTime  currentdate = DateTime.Now;
         public static bool CheckData(string q1, string q2, string q3)
         {
-            bool flag = true;
-
+            bool flag = false;
 
             if (q1.Length != 0)
             {
                 foreach (char c in q1)
                 {
                     if (c < '0' || c > '9')
-                        flag = false;
+                    {
+                        MessageBox.Show("DrugStore ID is invalid");
+                        return false;
+                    }
+                    //flag = false;
 
                 }
-                if (flag == false)
-                    MessageBox.Show("DrugStore ID is invalid");
+                // (flag == false)
+                // MessageBox.Show("DrugStore ID is invalid");
             }
-            else flag = false;
+            else
+            { MessageBox.Show("DrugStore ID is invalid"); return false; }
 
             if (q2.Length != 0 && Char.IsLetter(q2, 0))
             {
@@ -36,7 +40,7 @@ namespace Lab8
             else
             {
                 MessageBox.Show("Medicine name is invalid");
-                flag = false;
+                return false;
             }
             try
             {
@@ -46,109 +50,79 @@ namespace Lab8
                 else
                 {
                     MessageBox.Show("Date is invalid");
-                    flag = false;
+                    return false;
                 }
             }
             catch
             {
                 MessageBox.Show("Date is invalid");
-                flag = false;
+                return false;
             }
-            return flag;
+            return true;
 
         }
 
-        public static bool CheckFullData(string q1, string q2, string q3, string q4, string q5, string q6)
+        public static bool CheckFullData(string q3, string q4, string q5, string q6)
         {
-            bool flag = true;
+            bool flag = false;
 
-
-            if (q1.Length != 0)
-            {
-                foreach (char c in q1)
-                {
-                    if (c < '0' || c > '9')
-                        flag = false;
-
-                }
-                if (flag == false)
-                    MessageBox.Show("DrugStore ID is invalid");
-            }
-            else flag = false;
-
-            if (q2.Length != 0 && (q2.Any(c => char.IsLetter(c))))
-            {
-                flag = true;
-            }
-            else
-            {
-                MessageBox.Show("Medicine name is invalid");
-                flag = false;
-            }
-            try
-            {
-                
-                if (DateTime.Parse(q3)<= currentdate)
-                    flag = true;
-                else
-                {
-                    MessageBox.Show("Date is invalid");
-                    flag = false;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Date is invalid");
-                flag = false;
-            }
             if (q4.Length != 0)
             {
-                foreach (char c in q1)
+                foreach (char c in q4)
                 {
                     if (c < '0' || c > '9')
-                        flag = false;
-
-                }
-                if (flag == false)
-                    MessageBox.Show("Amount of product is invalid");
-            }
-            else
-            { flag = false; MessageBox.Show("Amount of product is invalid"); }
-
-            if (q5.Length != 0)
-            {
-                foreach (char c in q1)
-                {
-                    if (c < '0' || c > '9')
-                        flag = false;
-
-                }
-                if (flag == false)
-                    MessageBox.Show("Price is invalid");
-            }
-            else
-            { flag = false; MessageBox.Show("Price is invalid"); }
-
-            if (q6.Length != 0)
-            {
-                foreach (char c in q1)
-                {
-                    if (c < '0' || c > '9')
-                        flag = false;
-                    else if (Expirated(q3, q6))
-                    { 
-                        flag = false; 
-                       // MessageBox.Show("The medicine has expired");
+                    {
+                        MessageBox.Show("Amount of product is invalid");
+                        return false;
                     }
 
                 }
-                if (flag == false)
-                    MessageBox.Show("Storage period is invalid");
+                //if (flag == false)
+                  //  MessageBox.Show("Amount of product is invalid");
             }
-            else { flag = false; MessageBox.Show("Storage period is invalid"); }
+            else
+            { MessageBox.Show("Amount of product is invalid"); return false; }
+
+            if (q5.Length != 0)
+            {
+                foreach (char c in q5)
+                {
+                    if (c < '0' || c > '9')
+                    {
+                        MessageBox.Show("Price is invalid");
+                        return false;
+                    }
+
+                }
+               // if (flag == false)
+                   // MessageBox.Show("Price is invalid");
+            }
+            else
+            {  MessageBox.Show("Price is invalid"); return false; }
+
+            if (q6.Length != 0)
+            {
+                foreach (char c in q6)
+                {
+                    if (c < '0' || c > '9')
+                    {
+                        MessageBox.Show("Price is invalid");
+                        return false;
+                    }
+                    else if (Expirated(q3, q6))
+                    {
+                        return false;
+                        // MessageBox.Show("The medicine has expired");
+                    }
+
+                }
+                //if (flag == false)
+                   // MessageBox.Show("Storage period is invalid");
+            }
+            else { MessageBox.Show("Storage period is invalid"); return false; }
 
 
-            return flag;
+            return true;
 
         }
 

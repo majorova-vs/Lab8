@@ -142,8 +142,8 @@ namespace Lab8
             string q4 = DataBank.in4;
             string q5 = DataBank.in5;
             string q6 = DataBank.in6;
-            if (Check.CheckFullData(q1,q2,q3,q4,q5,q6))
-            {
+            
+            
                 if (Check.FindMatch(q1, q2, q3, doc))
                 {
 
@@ -159,7 +159,7 @@ namespace Lab8
                     doc.Save("bs.xml");
                 }
                 else MessageBox.Show("The record already exists");
-            }
+            
             DataBank.in1 = "";
             DataBank.in2 = "";
             DataBank.in3 = "";
