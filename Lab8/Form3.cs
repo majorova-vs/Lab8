@@ -32,7 +32,7 @@ namespace Lab8
             }
             DataBank.in1 = textBox1.Text;
             DataBank.in2 = textBox2.Text;
-            DataBank.in3 = textBox3.Text;
+            DataBank.in3 = textBox3.Text;  
             DataBank.in4 = textBox4.Text;
             DataBank.in5 = textBox5.Text;
             DataBank.in6 = textBox6.Text;
