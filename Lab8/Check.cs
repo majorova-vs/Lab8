@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Lab8
 {
-    class Check
+    public class Check
     {
        static DateTime  currentdate = DateTime.Now;
         public static bool CheckData(string q1, string q2, string q3)
